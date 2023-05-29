@@ -12,3 +12,7 @@ Here are some useful starting links:
 <http://metawidget.org/doc/reference/en/html/ch01s02.html>
 
 There is lots more documentation available at <http://metawidget.org>, <http://blog.kennardconsulting.com>, and other sources.
+
+## Implementation
+
+I am not 100% sure what I am supposed to produce for this - I get the technical specs, but I am not usre if this should be an app or a website or what. but anyway here we go.
