@@ -1,0 +1,6 @@
+{
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "c:\\Program Files\\Java\\metawidget-4.2-bin\\metawidget-4.2\\java\\metawidget-all.jar"
+  ]
+}
