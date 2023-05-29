@@ -15,4 +15,4 @@ There is lots more documentation available at <http://metawidget.org>, <http://b
 
 ## Implementation
 
-I am not 100% sure what I am supposed to produce for this - I get the technical specs, but I am not usre if this should be an app or a website or what. but anyway here we go.
+Okay, So we need to build a frontend website, and maybe a backend that deals with people - if I am reading the directions correctly, cosonle logging the data entered in the front end would be sufficient, but we can do a backend pretty quickly with spring, although deploying it may be tough.
