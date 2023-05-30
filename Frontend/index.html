@@ -24,7 +24,6 @@
 
       function submitForm() {
         let formData = {};
-
         // Iterate over form fields
         let formFields = document.querySelectorAll(
           "#metawidget input, #metawidget select"
@@ -37,31 +36,35 @@
         console.log(formData);
       }
 
-      fetch("tempdata.json")
-        .then((response) => response.json())
-        .then((data) => {
-          //so mw is the instance of the widget
-          mw = new metawidget.Metawidget(
-            document.getElementById("metawidget"),
-            {
-              //so the inspector type is what we call depending on the data we are passing to the widgets
-              inspector: new metawidget.inspector.PropertyTypeInspector(),
-              readOnly: false,
-            }
-          );
+      function summonData() {
+        return fetch("tempdata.json")
+          .then((response) => response.json())
+          .then((data) => {
+            return data;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
 
-          //configure metawidget behaviour
+      mw = new metawidget.Metawidget(document.getElementById("metawidget"), {
+        //configure metawidget behaviour
+        //so the inspector type is what we call depending on the data we are passing to the widgets
+        inspector: new metawidget.inspector.PropertyTypeInspector(),
+        readOnly: false,
+        //layoutConfig: new metawidget.layout.TableLayout(),
+      });
 
-          //set the data to be displayed
-
-          mw.toInspect = data;
-          mw.buildWidgets();
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+      //set the data to be displayed
+      summonData().then((data) => {
+        mw.toInspect = {
+          name: data.name,
+          age: data.age,
+          retired: data.retired,
+          children: data.children,
+        };
+        mw.buildWidgets();
+      });
     </script>
-
-    <script type="text/javascript"></script>
   </body>
 </html>
