@@ -22,20 +22,26 @@
     <script type="text/javascript">
       let mw;
 
+      //heres our submit form button
       function submitForm() {
+        //create an empty object to hold the data for submit
         let formData = {};
-        // Iterate over form fields
+        // go through all the form elements on the document
         let formFields = document.querySelectorAll(
           "#metawidget input, #metawidget select"
         );
+        //build the form data into json
         formFields.forEach(function (field) {
           let fieldName = field.getAttribute("name");
           let fieldValue = field.value;
           formData[fieldName] = fieldValue;
         });
+
+        //"submit" it
         console.log(formData);
       }
 
+      //basic fetch to get json data
       function summonData() {
         return fetch("tempdata.json")
           .then((response) => response.json())
@@ -52,7 +58,6 @@
         //so the inspector type is what we call depending on the data we are passing to the widgets
         inspector: new metawidget.inspector.PropertyTypeInspector(),
         readOnly: false,
-        //layoutConfig: new metawidget.layout.TableLayout(),
       });
 
       //set the data to be displayed
@@ -62,6 +67,7 @@
           age: data.age,
           retired: data.retired,
           children: data.children,
+          address: data.address,
         };
         mw.buildWidgets();
       });
