@@ -1,9 +1,22 @@
 #metawidgetHolder {
-  background-color: red;
-  color: blue;
+  background-color: white;
+  color: black;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   display: flex;
   flex-direction: column;
-  display: flex;
-  flex-direction: column;
+  padding: 1rem;
+}
+
+.metaCard {
+  padding: 2rem;
+  border: 3px solid black;
+  margin: 1rem;
+  border-radius: 1rem;
+}
+
+.metaFormSubmitButton {
+  width: 10%;
+  background-color: greenyellow;
+  border-radius: 1rem;
+  font-size: larger;
 }/*# sourceMappingURL=index.css.map */
