@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-App<techtest>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.pulsi.App",
+      "projectName": "techtest",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
