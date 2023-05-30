@@ -6,55 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/index.css" />
     <title>Document</title>
-
     <script
       src="./metawidget/metawidget-core.min.js"
       type="text/javascript"
     ></script>
-
-    <script type="text/javascript">
-      //placeholder data
-      let person = {
-        name: "Homer Simpson",
-        age: 40,
-        retired: false,
-      };
-    </script>
   </head>
   <body>
-    <!-- so this works in the live server, but not here.I presume because it is being built with js -->
     <div class="flexbox">
-      <div id="metawidgetHolder">
+      <form id="metawidgetHolder">
         <div id="metawidget" styleClass="metawidget"></div>
-      </div>
+        <button type="submit" onclick="submitForm()">Submit</button>
+      </form>
     </div>
 
     <script type="text/javascript">
-      let mw = new metawidget.Metawidget(
-        document.getElementById("metawidget"),
-        {
-          inspector: new metawidget.inspector.CompositeInspector([
-            new metawidget.inspector.PropertyTypeInspector(),
-            function (toInspect, type, names) {
-              return {
-                properties: {
-                  name: {
-                    type: "string",
-                    required: true,
-                  },
-                  age: {
-                    type: "int",
-                    required: true,
-                  },
-                },
-              };
-            },
-          ]),
-        }
-      );
+      let mw;
 
-      mw.toInspect = person;
-      mw.buildWidgets();
+      function submitForm() {
+        let formData = {};
+
+        // Iterate over form fields
+        let formFields = document.querySelectorAll(
+          "#metawidget input, #metawidget select"
+        );
+        formFields.forEach(function (field) {
+          let fieldName = field.getAttribute("name");
+          let fieldValue = field.value;
+          formData[fieldName] = fieldValue;
+        });
+        console.log(formData);
+      }
+
+      fetch("tempdata.json")
+        .then((response) => response.json())
+        .then((data) => {
+          //so mw is the instance of the widget
+          mw = new metawidget.Metawidget(
+            document.getElementById("metawidget"),
+            {
+              //so the inspector type is what we call depending on the data we are passing to the widgets
+              inspector: new metawidget.inspector.PropertyTypeInspector(),
+              readOnly: false,
+            }
+          );
+
+          //configure metawidget behaviour
+
+          //set the data to be displayed
+
+          mw.toInspect = data;
+          mw.buildWidgets();
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     </script>
+
+    <script type="text/javascript"></script>
   </body>
 </html>
