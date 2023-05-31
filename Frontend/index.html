@@ -48,15 +48,23 @@
       }
 
       //basic fetch to get json data
-      function summonData() {
-        return fetch("tempdata.json")
-          .then((response) => response.json())
-          .then((data) => {
-            return data;
-          })
-          .catch((error) => {
-            console.error(error);
-          });
+      async function summonData() {
+        try {
+          const response = await fetch("http://localhost8080/persons");
+          const data = await response.json;
+          return data;
+        } catch (error) {
+          throw new Error("failed to fetch");
+        }
+
+        // await fetch("tempdata.json")
+        //   .then((response) => response.json())
+        //   .then((data) => {
+        //     return data;
+        //   })
+        //   .catch((error) => {
+        //     console.error(error);
+        //   });
       }
 
       mw = new metawidget.Metawidget(document.getElementById("metawidget"), {
