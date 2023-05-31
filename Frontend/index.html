@@ -50,7 +50,7 @@
       //basic fetch to get json data
       async function summonData() {
         try {
-          const response = await fetch("http://localhost8080/persons");
+          const response = await fetch("http://localhost:8080/persons");
           const data = await response.json;
           return data;
         } catch (error) {
