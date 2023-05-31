@@ -17,4 +17,14 @@ There is lots more documentation available at <http://metawidget.org>, <http://b
 
 Okay, So we need to build a frontend website, and maybe a backend that deals with people - if I am reading the directions correctly, console logging the data entered in the front end would be sufficient, but we can do a backend pretty quickly with spring, although deploying it may be tough. the frontend is just built with basic javascript, although for any real project you would do it with react or something else. For this, it works, although it isn't pretty. My reasoning here is that I have had issues deploying react applications to free hosting platforms before, and I don't want to end up with a mime type error turning the application into a blank page because I can't fiddle with how github pages or netlify sends the data. Styling is done with SASS - although it is pretty basic. obviously you could use bootstrap or metawidgets inbuilt tools, but I actually enjoy writing CSS code.
 
-Update: have technically completed the mvp (I think); we have a web page that uses metawidget as a form that console logs any change to the data you enter. It then reloads the original data because it is just pulling from a static json file. Currently it keeps the address nested, although it doesn't work with family members; presumably soemthing to do with the way the JSON array is configured. At this point I think the next step is to build out a quick backend for the project, because this is a full stack job.
+Update: Have technically completed the mvp (I think); we have a web page that uses metawidget as a form that console logs any change to the data you enter. It then reloads the original data because it is just pulling from a static json file. Currently it keeps the address nested, although it doesn't work with family members; presumably soemthing to do with the way the JSON array is configured. At this point I think the next step is to build out a quick backend for the project, because this is a full stack job.
+
+Update: Have Added a backend built in spring to the project. Full disclosure, I have just reused a lot of code I wrote for a previous project, which is why it only took an hour and a half.
+
+## Tech Stack
+
+- HTML
+- SCSS
+- Javascript
+- Spring Boot
+- MySQL
