@@ -21,6 +21,8 @@ Update: Have technically completed the mvp (I think); we have a web page that us
 
 Update: Have Added a backend built in spring to the project. Full disclosure, I have just reused a lot of code I wrote for a previous project, which is why it only took an hour and a half.
 
+Update: The server connects to the backend, and the backend can talk to the frontend - or at at least it makes the get all data request. no data currently exists in the server. I will put some data in in postman, then hook the update function to the submit button. At that point we get to see what it will look like.
+
 ## Tech Stack
 
 - HTML
