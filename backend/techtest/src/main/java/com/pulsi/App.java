@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan({ "com.pulsi" })
 public class App {
 
+  //this turns the server to 'on'
   public static void main(String[] args) {
     SpringApplication.run(App.class, args);
   }
