@@ -13,6 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PersonService {
 
+  //these are all the functions we call in our controller to handle the mappings
+
+  //the JPA repository has a bunch of built in functions that handle save, find, etc
   @Autowired
   private PersonRepository personRepository;
 

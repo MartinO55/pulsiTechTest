@@ -23,6 +23,7 @@ public class PersonController {
   @Autowired
   private PersonService personService;
 
+  //here are all our mappings for get,post, patch and delete
   @PostMapping
   public ResponseEntity<Person> createPerson(
     @Valid @RequestBody CreatePersonDto data

@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class CorsConfig implements WebMvcConfigurer {
 
+  //here is the CORS mapping. it stops nothing, because I don't want to deal with it when its entirely on the local host
   @Override
   public void addCorsMappings(CorsRegistry registry) {
     registry

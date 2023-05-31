@@ -27,4 +27,5 @@ Update: Have Added a backend built in spring to the project. Full disclosure, I 
 - SCSS
 - Javascript
 - Spring Boot
+- MySQL workbench
 - MySQL

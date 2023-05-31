@@ -15,6 +15,8 @@ public class Person implements Serializable {
 
   //this is where we define what we are keeping in the database; specifically, what makes up a person. I am going to remove children from the front end because it is causing some annoyance, and also would likely violate business rules
   // I think the best way to handle kids is to add a separate table and add a foreign key to this one
+
+  //lets just have the computer handle ID generation rather than trying it myself
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   Long id;
