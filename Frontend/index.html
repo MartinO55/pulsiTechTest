@@ -73,6 +73,20 @@
         //   });
       }
 
+      //delete by id function
+      async function deleteById(id) {
+        try {
+          const response = await fetch(
+            "http://localhost:8080/people" + `/${id}`,
+            { method: "DELETE" }
+          );
+          console.log("deleted person with id: " + id);
+        } catch (error) {
+          console.log(error);
+          console.log("failed to find person with id: " + id);
+        }
+      }
+
       mw = new metawidget.Metawidget(document.getElementById("metawidget"), {
         //configure metawidget behaviour
 

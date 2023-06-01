@@ -30,8 +30,20 @@ Update: Gave up on the button thing, I just don't think its possible without a r
 ## Tech Stack
 
 - HTML
-- SCSS
+- SASS/SCSS
 - Javascript
 - Spring Boot
 - MySQL workbench
 - MySQL
+
+## Installation and Running
+
+You will need: mysql workbench, Springboot.
+
+Configure the sql server in workbench with the title "pulsitechtest".
+
+In "backend\techtest\src\main\resources\application.properties", alter the "spring.datasource.url" variable to reflect your localhost settings for the server above. If you used a different name for the server, enter it here.
+
+Run the App.java file to start the spring boot server.
+
+open index.html in the frontend folder.
