@@ -14,15 +14,16 @@
   <body>
     <div class="flexbox">
       <!--I turned the metawidget into a form as part of a CRUD application-->
-      <form id="metawidgetHolder" class="metaHolder">
-        <div id="metawidget" class="metaCard"></div>
-        <button
-          type="submit"
-          onclick="submitForm()"
-          class="metaFormSubmitButton"
-        >
-          Submit
-        </button>
+      <form class="metaHolder" id="metawidgetHolder">
+        <div id="metawidget" class="metaCard">
+          <button
+            type="submit"
+            onclick="submitForm()"
+            class="metaFormSubmitButton"
+          >
+            Referesh
+          </button>
+        </div>
       </form>
     </div>
 
@@ -51,13 +52,16 @@
       //basic fetch to get json data
       async function summonData() {
         try {
-          const response = await fetch("http://localhost:8080/persons");
-          const data = await response.json;
+          const response = await fetch("http://localhost:8080/people");
+          const data = await response.json();
+          console.log(data);
+
           return data;
         } catch (error) {
           throw new Error("failed to fetch");
         }
 
+        //this function just fetches the tempjson data file
         // await fetch("tempdata.json")
         //   .then((response) => response.json())
         //   .then((data) => {
@@ -70,21 +74,57 @@
 
       mw = new metawidget.Metawidget(document.getElementById("metawidget"), {
         //configure metawidget behaviour
-        //so the inspector type is what we call depending on the data we are passing to the widgets
-        inspector: new metawidget.inspector.PropertyTypeInspector(),
+
         readOnly: false,
+        layout: new metawidget.layout.SimpleLayout(),
+        //so the inspector type is what we call depending on the data we are passing to the widgets
+        //apparently removing the inspector causes metawidget to just use the default display behaviour so it just displays...
+        //so we can't actually do json schema inspector because the data is returned as an array
+        // inspector: new metawidget.inspector.JsonSchemaInspector({
+        //   properties: {
+        //     name: { type: "string" },
+        //     streetAddress: { type: "string" },
+        //     createdAt: { type: "string", hidden: "true" },
+        //     city: { type: "string" },
+        //     age: { type: "int" },
+        //     retired: { type: "boolean" },
+        //   },
+        // }),
       });
 
       //set the data to be displayed
       summonData().then((data) => {
-        mw.toInspect = {
-          name: data.name,
-          age: data.age,
-          retired: data.retired,
-          //children: data.children,//since we have no children in the database
-          address: data.address,
-        };
+        mw.toInspect = data;
         mw.buildWidgets();
+
+        //okay, this one beat me - I was trying to add an edit button to every row that the database passes back, but I am giving up - I can't get it to add an id to each row or add the button - the issue I think
+        //is that the build widgets is separate from the manipulation; it would if I was getting JSON from the server but I get an array of JSON. doing it here just adds it to the first element
+        //So I am cheating. Each button knows who it belongs to, so the edit function can be tied here; index right now is congruent to id (although one delete function and it won't be), So I am just creating the
+        //buttons in TR0, giving them their own container and changing the direction they run with css.
+        if (Array.isArray(data)) {
+          const metawidgetHolder = document.getElementById("metawidgetHolder");
+          const tableBody = metawidgetHolder.querySelector("tbody");
+          const buttonContainer = document.createElement("div");
+          buttonContainer.className = "button_container";
+
+          data.forEach((person, index) => {
+            const tableRow = tableBody.querySelector("tr");
+            //leaving this in to demonstrate that the classname only exists on the first line of the table
+            tableRow.className = "tablerow";
+
+            const button = document.createElement("button");
+
+            button.textContent = `edit Person ${index + 1}`;
+            button.addEventListener("click", () => {
+              event.preventDefault();
+              console.log(person.name);
+              mw.buildWidgets();
+            });
+            buttonContainer.appendChild(button);
+
+            tableRow.appendChild(buttonContainer);
+          });
+        }
       });
     </script>
   </body>

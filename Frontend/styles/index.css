@@ -15,8 +15,18 @@
 }
 
 .metaFormSubmitButton {
-  width: 10%;
   background-color: greenyellow;
+  padding: 0.5rem;
   border-radius: 1rem;
   font-size: larger;
+}
+
+.button_container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+}
+.button_container button {
+  background-color: green;
+  border-radius: 0.5rem;
 }/*# sourceMappingURL=index.css.map */

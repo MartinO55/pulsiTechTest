@@ -23,6 +23,8 @@ Update: Have Added a backend built in spring to the project. Full disclosure, I 
 
 Update: The server connects to the backend, and the backend can talk to the frontend - or at at least it makes the get all data request. no data currently exists in the server. I will put some data in in postman, then hook the update function to the submit button. At that point we get to see what it will look like.
 
+Update: So we have hooked the frontend to the backend, and are displaying the data in the metawidget. However, we can't manipulate the internals of the genereated table - i.e. I have been trying to add a button to each row of the table inline, but without success
+
 ## Tech Stack
 
 - HTML
