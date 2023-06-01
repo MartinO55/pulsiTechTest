@@ -25,6 +25,8 @@ Update: The server connects to the backend, and the backend can talk to the fron
 
 Update: So we have hooked the frontend to the backend, and are displaying the data in the metawidget. However, we can't manipulate the internals of the genereated table - i.e. I have been trying to add a button to each row of the table inline, but without success
 
+Update: Gave up on the button thing, I just don't think its possible without a really deep dive into metawidget, and I don't have time to figure it out. instead, I cheated and added all the buttons to the top row and moved them around with css. Otherwise the current issue is the lack of time to go back and do a refactor to hook everything up to the CRUD - I need to rewrite the frontend to do that
+
 ## Tech Stack
 
 - HTML
