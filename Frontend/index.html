@@ -17,38 +17,15 @@
       <form class="metaHolder" id="metawidgetHolder">
         <div id="metawidget" class="metaCard">
           <!--This button is obsolete - it just sends stuff to the console log in the browser, not the server. -->
-          <button
-            type="submit"
-            onclick="submitForm()"
-            class="metaFormSubmitButton"
-          >
-            Refresh
-          </button>
+          <div>
+            <a href="./pages/createPerson.html">create a person</a>
+          </div>
         </div>
       </form>
     </div>
 
     <script type="text/javascript">
       let mw;
-
-      //heres our submit form button. currently obsolete because with multiple people in the form it is an array of json, not json
-      function submitForm() {
-        //create an empty object to hold the data for submit
-        let formData = {};
-        // go through all the form elements on the document
-        let formFields = document.querySelectorAll(
-          "#metawidget input, #metawidget select"
-        );
-        //build the form data into json
-        formFields.forEach(function (field) {
-          let fieldName = field.getAttribute("name");
-          let fieldValue = field.value;
-          formData[fieldName] = fieldValue;
-        });
-
-        //"submit" it
-        console.log(formData);
-      }
 
       //basic fetch to get json data
       async function summonData() {
