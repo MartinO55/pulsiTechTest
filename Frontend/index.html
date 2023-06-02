@@ -16,12 +16,13 @@
       <!--I turned the metawidget into a form as part of a CRUD application-->
       <form class="metaHolder" id="metawidgetHolder">
         <div id="metawidget" class="metaCard">
+          <!--This button is obsolete - it just sends stuff to the console log in the browser, not the server. -->
           <button
             type="submit"
             onclick="submitForm()"
             class="metaFormSubmitButton"
           >
-            Referesh
+            Refresh
           </button>
         </div>
       </form>
@@ -124,6 +125,8 @@
           //this creates the new container to hold the buttons and gives it a class I can tap with CSS
           const buttonContainer = document.createElement("div");
           buttonContainer.className = "button_container";
+          const deleteButtonContainer = document.createElement("div");
+          deleteButtonContainer.className = "delete_button_container";
 
           //I don't know how many people will be in the DB, so we will loop through all of them, and add the button holder to the first tr in the table. many people mean much loading
           data.forEach((person, index) => {
@@ -133,16 +136,27 @@
             tableRow.className = "tablerow";
 
             const button = document.createElement("button");
+            const deleteButton = document.createElement("button");
             //I would just leave this as 'edit' as they are now inline, but just to demonstrate...
             button.textContent = `edit Person ${index + 1}`;
+            deleteButton.textContent = `delete person ${index + 1}`;
             button.addEventListener("click", () => {
               //function added to the button - at current, it just outputs the persons name to demonstrate it knows where it is
               event.preventDefault();
               console.log(person.name);
             });
+            deleteButton.addEventListener("click", () => {
+              event.preventDefault();
+              //this doesn't really work more than once - cause we need to clear the table. If was doing this in react we would be using state to store the variables... but I would need to refactor this into react
+              //which would take too long
+              deleteById(index);
+              console.log("deleted: " + person.name);
+            });
             //add the buttons to the container and the container to the table
             buttonContainer.appendChild(button);
+            deleteButtonContainer.appendChild(deleteButton);
             tableRow.appendChild(buttonContainer);
+            tableRow.appendChild(deleteButtonContainer);
           });
         }
       });
