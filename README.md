@@ -27,6 +27,8 @@ Update: So we have hooked the frontend to the backend, and are displaying the da
 
 Update: Gave up on the button thing, I just don't think its possible without a really deep dive into metawidget, and I don't have time to figure it out. instead, I cheated and added all the buttons to the top row and moved them around with css. Otherwise the current issue is the lack of time to go back and do a refactor to hook everything up to the CRUD - I need to rewrite the frontend to do that
 
+Update: have added a new page for the create person form - it console logs the data or sends it to the server if its up. not styled yet but it might be before submission
+
 ## Tech Stack
 
 - HTML
