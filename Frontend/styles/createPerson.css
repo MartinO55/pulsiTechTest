@@ -1,0 +1,16 @@
+.flexbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.flexbox .submitButton {
+  background-color: greenyellow;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.flexbox .homeLink {
+  font-size: large;
+}/*# sourceMappingURL=createPerson.css.map */
